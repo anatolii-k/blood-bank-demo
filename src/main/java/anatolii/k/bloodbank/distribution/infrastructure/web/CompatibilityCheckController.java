@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/distribution/compatibility")
 public class CompatibilityCheckController {
 
-    private Logger logger = LoggerFactory.getLogger(CompatibilityCheckController.class);
-
     @GetMapping
     ResponseEntity<CompatibilityCheckResponse> checkCompatibility(@RequestParam String recipientType,
                                                                   @RequestParam String donorType){
@@ -23,4 +21,5 @@ public class CompatibilityCheckController {
         return ResponseEntity.ok( new CompatibilityCheckResponse(true));
     }
 
+    private static final Logger logger = LoggerFactory.getLogger(CompatibilityCheckController.class);
 }
