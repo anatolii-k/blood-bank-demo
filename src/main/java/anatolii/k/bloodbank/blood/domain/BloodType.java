@@ -1,16 +1,22 @@
 package anatolii.k.bloodbank.blood.domain;
 
-import java.util.Objects;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BloodType {
+public enum BloodType {
+    A_POSITIVE (ABO.A, Rh.POSITIVE),
+    A_NEGATIVE (ABO.A, Rh.NEGATIVE),
+    B_POSITIVE (ABO.B, Rh.POSITIVE),
+    B_NEGATIVE (ABO.B, Rh.NEGATIVE),
+    AB_POSITIVE (ABO.AB, Rh.POSITIVE),
+    AB_NEGATIVE (ABO.AB, Rh.NEGATIVE),
+    O_POSITIVE (ABO.O, Rh.POSITIVE),
+    O_NEGATIVE (ABO.O, Rh.NEGATIVE);
 
-    public static BloodType from( ABO abo, Rh rh ){
-        if(abo == null || rh == null){
-            throw IllegalBloodTypeException.nullAboOrRh();
-        }
-        return new BloodType(abo, rh);
+    private BloodType(ABO abo, Rh rh){
+        this.abo = abo;
+        this.rh  = rh;
     }
 
     public static BloodType fromString(String strABORh ){
@@ -24,20 +30,19 @@ public class BloodType {
         {
             try
             {
-                ABO abo = ABO.valueOf(matcher.group(1));
-                Rh  rh  = Rh.fromString(matcher.group(2));
-                return new BloodType(abo, rh);
+                final ABO abo = ABO.valueOf(matcher.group(1));
+                final Rh  rh  = Rh.fromString(matcher.group(2));
+
+                return Arrays.stream(values())
+                        .filter( type -> type.abo == abo && type.rh == rh )
+                        .findFirst()
+                        .orElse(null);
             }
             catch(Throwable e){
                 throw IllegalBloodTypeException.causedBy(e);
             }
         }
         throw IllegalBloodTypeException.invalidBloodTypeString(strABORh);
-    }
-
-    private BloodType(ABO abo, Rh rh) {
-        this.abo = abo;
-        this.rh = rh;
     }
 
     public ABO getAbo() {
@@ -51,18 +56,6 @@ public class BloodType {
     @Override
     public String toString() {
         return abo.name() + ( rh == Rh.POSITIVE ? "+": "-" );
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        BloodType bloodType = (BloodType) o;
-        return abo == bloodType.abo && rh == bloodType.rh;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(abo, rh);
     }
 
     private final ABO abo;

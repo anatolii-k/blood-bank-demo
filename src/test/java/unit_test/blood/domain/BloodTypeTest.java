@@ -104,30 +104,4 @@ public class BloodTypeTest {
         Assertions.assertThatThrownBy( () -> BloodType.fromString("X") )
                 .isInstanceOf(IllegalBloodTypeException.class);
     }
-
-    @Test
-    void whenValidAboAndRh_ThenBloodTypeIsCreated(){
-        {
-            ABO abo = ABO.A;
-            Rh rh = Rh.NEGATIVE;
-            BloodType bt = BloodType.from(abo,rh);
-
-            assertThat(bt).isNotNull();
-            assertThat(bt.getAbo()).isEqualTo(abo);
-            assertThat(bt.getRh()).isEqualTo(rh);
-        }
-    }
-
-    @Test
-    void whenAboOrRhIsNull_ThenExceptionIsThrown(){
-
-        Assertions.assertThatThrownBy( () -> BloodType.from(ABO.A,null) )
-                .isInstanceOf(IllegalBloodTypeException.class);
-
-        Assertions.assertThatThrownBy( () -> BloodType.from(null, Rh.NEGATIVE) )
-                .isInstanceOf(IllegalBloodTypeException.class);
-
-        Assertions.assertThatThrownBy( () -> BloodType.from(null, null) )
-                .isInstanceOf(IllegalBloodTypeException.class);
-    }
 }
