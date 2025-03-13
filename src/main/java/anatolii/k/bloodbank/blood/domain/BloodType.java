@@ -14,7 +14,7 @@ public enum BloodType {
     O_POSITIVE (ABO.O, Rh.POSITIVE),
     O_NEGATIVE (ABO.O, Rh.NEGATIVE);
 
-    private BloodType(ABO abo, Rh rh){
+    BloodType(ABO abo, Rh rh){
         this.abo = abo;
         this.rh  = rh;
     }

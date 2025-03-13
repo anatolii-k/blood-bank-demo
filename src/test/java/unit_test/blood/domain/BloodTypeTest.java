@@ -14,48 +14,56 @@ public class BloodTypeTest {
         {
             BloodType bt = BloodType.fromString("AB+");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.AB_POSITIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.AB);
             assertThat(bt.getRh()).isEqualTo(Rh.POSITIVE);
         }
         {
             BloodType bt = BloodType.fromString("AB-");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.AB_NEGATIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.AB);
             assertThat(bt.getRh()).isEqualTo(Rh.NEGATIVE);
         }
         {
             BloodType bt = BloodType.fromString("A+");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.A_POSITIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.A);
             assertThat(bt.getRh()).isEqualTo(Rh.POSITIVE);
         }
         {
             BloodType bt = BloodType.fromString("A-");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.A_NEGATIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.A);
             assertThat(bt.getRh()).isEqualTo(Rh.NEGATIVE);
         }
         {
             BloodType bt = BloodType.fromString("B+");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.B_POSITIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.B);
             assertThat(bt.getRh()).isEqualTo(Rh.POSITIVE);
         }
         {
             BloodType bt = BloodType.fromString("B-");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.B_NEGATIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.B);
             assertThat(bt.getRh()).isEqualTo(Rh.NEGATIVE);
         }
         {
             BloodType bt = BloodType.fromString("O+");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.O_POSITIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.O);
             assertThat(bt.getRh()).isEqualTo(Rh.POSITIVE);
         }
         {
             BloodType bt = BloodType.fromString("O-");
             assertThat(bt).isNotNull();
+            assertThat(bt).isEqualTo(BloodType.O_NEGATIVE);
             assertThat(bt.getAbo()).isEqualTo(ABO.O);
             assertThat(bt.getRh()).isEqualTo(Rh.NEGATIVE);
         }

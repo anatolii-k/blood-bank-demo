@@ -6,11 +6,11 @@ Blood Typing and Transfusion Compatibility
 Blood transfusions require matching both the ABO group and Rh factor. Below is a compatibility table:
 
 Recipient Blood Type	Matching Donor Blood Type
-A+			A+, A-, O+, O-
-A-			A-, O-
-B+			B+, B-, O+, O-
-B-			B-, O-
-AB+			Compatible with all blood types
-AB-			AB-, A-, B-, O-
-O+			O+, O-
-O-			O-
+A+                      A+, A-, O+, O-
+A-                      A-, O-
+B+                      B+, B-, O+, O-
+B-                      B-, O-
+AB+                     Compatible with all blood types
+AB-                     AB-, A-, B-, O-
+O+                      O+, O-
+O-                      O-
