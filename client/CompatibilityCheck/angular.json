@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "BBankDistribution": {
+    "CompatibilityCheck": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../src/main/resources/static/distribution",
+            "outputPath": "../../src/main/resources/static/utilities/compatibility",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "BBankDistribution:build:production"
+              "browserTarget": "CompatibilityCheck:build:production"
             },
             "development": {
-              "browserTarget": "BBankDistribution:build:development"
+              "browserTarget": "CompatibilityCheck:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "BBankDistribution:build"
+            "browserTarget": "CompatibilityCheck:build"
           }
         },
         "test": {
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "BBankDistribution"
+  "defaultProject": "CompatibilityCheck"
 }

@@ -16,7 +16,9 @@ export class CompatiblityCheckComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   checkCompatibility() {
-    const url = `http://localhost:8080/api/distribution/compatibility?recipientType=${this.recipientBloodType}&donorType=${this.donorBloodType}`;
+    const recipient = encodeURIComponent(this.recipientBloodType);
+    const donor = encodeURIComponent(this.donorBloodType);
+    const url = `http://localhost:8080/api/utilities/compatibility?recipientType=${recipient}&donorType=${donor}`;
 
     this.http
       .get<any>(url)
@@ -31,7 +33,11 @@ export class CompatiblityCheckComponent implements OnInit {
       )
       .subscribe((response) => {
         if (response) {
-          if (response.isCompatible === true) {
+          if(response.ok === false)
+          {
+            this.showAlert('Failed to perform operation. Reason: ' + response.errors.join("; ") , 'alert-danger');
+          }
+          else if (response.compatible === true) {
             this.showAlert('Blood type is compatible', 'alert-success');
           } else {
             this.showAlert('Blood type is NOT compatible', 'alert-warning');

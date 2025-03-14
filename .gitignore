@@ -35,4 +35,4 @@ build/
 ###################
 
 /temp
-/src/main/resources/static/distribution
+/src/main/resources/static/utilities/**
