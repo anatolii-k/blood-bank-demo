@@ -67,7 +67,7 @@
 						<goals>
 							<goal>exec</goal>
 						</goals>
-						<phase>compile</phase> <!-- Choose the phase you want to hook the command into -->
+						<phase>validate</phase> <!-- Choose the phase you want to hook the command into -->
 						<configuration>
 							<workingDirectory>client/CompatibilityCheck</workingDirectory>
 							<executable>ng</executable>
