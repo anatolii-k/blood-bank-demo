@@ -4,5 +4,14 @@ public enum ABO {
     A,
     B,
     AB,
-    O
+    O;
+
+    public ABONumericFormat toNumericFormat(){
+        return switch (this){
+            case O -> ABONumericFormat.I;
+            case A -> ABONumericFormat.II;
+            case B -> ABONumericFormat.III;
+            case AB -> ABONumericFormat.IV;
+        };
+    }
 }

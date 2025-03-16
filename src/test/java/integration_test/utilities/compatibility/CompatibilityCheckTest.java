@@ -24,18 +24,52 @@ public class CompatibilityCheckTest {
     @Test
     void whenRequestWithCompatibleRecipientAndDonor_ThenResponseOkAndCompatibleIsTrue(){
 
-        ResponseEntity<String> response = rest.getForEntity(BASE_URL + "?recipientType=AB-&donorType=A-", String.class );
+        // Blood Types in ABO format
+        {
+            ResponseEntity<String> response = rest.getForEntity(BASE_URL + "?recipientType=AB-&donorType=A-", String.class );
 
-        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
 
-        DocumentContext responseJSON = JsonPath.parse(response.getBody());
-        Boolean isOk = responseJSON.read("$.ok");
-        Boolean isCompatible = responseJSON.read("$.compatible");
-        JSONArray errors = responseJSON.read("$.errors");
+            DocumentContext responseJSON = JsonPath.parse(response.getBody());
+            Boolean isOk = responseJSON.read("$.ok");
+            Boolean isCompatible = responseJSON.read("$.compatible");
+            JSONArray errors = responseJSON.read("$.errors");
 
-        assertThat(isOk.booleanValue()).isTrue();
-        assertThat(isCompatible.booleanValue()).isTrue();
-        assertThat(errors.isEmpty()).isTrue();
+            assertThat(isOk.booleanValue()).isTrue();
+            assertThat(isCompatible.booleanValue()).isTrue();
+            assertThat(errors.isEmpty()).isTrue();
+        }
+        // Blood Types in ABO Numeric format
+        {
+            ResponseEntity<String> response = rest.getForEntity(BASE_URL + "?recipientType=IV-&donorType=II-", String.class );
+
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+            DocumentContext responseJSON = JsonPath.parse(response.getBody());
+            Boolean isOk = responseJSON.read("$.ok");
+            Boolean isCompatible = responseJSON.read("$.compatible");
+            JSONArray errors = responseJSON.read("$.errors");
+
+            assertThat(isOk.booleanValue()).isTrue();
+            assertThat(isCompatible.booleanValue()).isTrue();
+            assertThat(errors.isEmpty()).isTrue();
+
+        }
+        // Blood Types in ABO Mixed format
+        {
+            ResponseEntity<String> response = rest.getForEntity(BASE_URL + "?recipientType=AB(IV)-&donorType=A(II)-", String.class );
+
+            assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+
+            DocumentContext responseJSON = JsonPath.parse(response.getBody());
+            Boolean isOk = responseJSON.read("$.ok");
+            Boolean isCompatible = responseJSON.read("$.compatible");
+            JSONArray errors = responseJSON.read("$.errors");
+
+            assertThat(isOk.booleanValue()).isTrue();
+            assertThat(isCompatible.booleanValue()).isTrue();
+            assertThat(errors.isEmpty()).isTrue();
+        }
     }
 
     @Test

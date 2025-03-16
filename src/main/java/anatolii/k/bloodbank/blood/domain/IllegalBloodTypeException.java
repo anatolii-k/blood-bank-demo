@@ -14,6 +14,10 @@ public class IllegalBloodTypeException extends RuntimeException{
         return new IllegalBloodTypeException("Blood Type is invalid. ABO or Rh is null");
     }
 
+    public static IllegalBloodTypeException AboAndNumericFormatMismatch(String bloodTypeStr, ABO abo, ABONumericFormat aboNumeric){
+        return new IllegalBloodTypeException("Blood type [%s] contains ABO=%s and Numeric=%s which do not match.".formatted(bloodTypeStr, abo, aboNumeric));
+    }
+
     private IllegalBloodTypeException(String msg, Throwable cause){
         super(msg, cause);
     }
