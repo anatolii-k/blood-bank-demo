@@ -1,10 +1,17 @@
 <form>
     <div class="mt-5 container border">
-        <h3 class="text-center m-3 p-3 border-bottom">Compatibility Check</h3>
+        <h2 class="text-center m-3 p-3 border-bottom">Compatibility Check</h2>
+
+        <div class="alert alert-light text-black-50" role="alert">
+          <small>Following format of Blood Type are supported:<br/>
+          ABO format:  A+, AB-, O+
+        </small>
+        </div>
+
         <div *ngIf="alertMessage" class="alert" [ngClass]="alertClass" role="alert">
           {{ alertMessage }}
         </div>
-        
+
         <div class="border-bottom mb-3 pb-2">
             <div class="form-group row m-1 p-1">
                 <div class="col-3">
@@ -14,12 +21,13 @@
                     <input
                     type="text"
                     id="recipientBloodType"
+                    name="recipientBloodType"
                     [(ngModel)]="recipientBloodType"
                     class="form-control"
                     placeholder="Enter recipient blood type"
-                  />  
+                  />
                 </div>
-              </div>      
+              </div>
 
               <div class="form-group row m-1 p-1">
                 <div class="col-3">
@@ -29,20 +37,21 @@
                     <input
                     type="text"
                     id="donorBloodType"
+                    name="donorBloodType"
                     [(ngModel)]="donorBloodType"
                     class="form-control"
-                    placeholder="Enter donor blood type"                          />  
+                    placeholder="Enter donor blood type"                          />
                 </div>
-              </div>      
+              </div>
             </div>
-        
+
             <div class="row mb-2">
                 <div class="col-3"></div>
                 <div class="col-3 m-2">
                     <button class="btn btn-primary" (click)="checkCompatibility()">Check</button>
                 </div>
             </div>
-        
+
       </div>
-      
+
 </form>
