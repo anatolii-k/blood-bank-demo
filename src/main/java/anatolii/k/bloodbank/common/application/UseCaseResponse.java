@@ -6,7 +6,7 @@ import java.util.List;
 public class UseCaseResponse {
 
     private boolean isOK;
-    private List<String> errors = new LinkedList<>();
+    private final List<String> errors = new LinkedList<>();
 
 
     public boolean isOK() {
