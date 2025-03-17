@@ -104,7 +104,7 @@ public enum BloodType {
 
         private boolean parseMixedFormat(String strABORh) {
             Matcher matcher = bloodTypeRegExMixed.matcher(strABORh);
-            ABONumericFormat aboNumeric = null;
+            ABONumericFormat aboNumeric;
             if( matcher.find() ) {
                 try {
                     abo = ABO.valueOf(matcher.group(1));
