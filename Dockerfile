@@ -11,7 +11,13 @@ RUN apt-get update && apt-get install -y curl && \
     apt-get install -y nodejs && \
     npm install -g @angular/cli
 
+#Workaround for NodeJS backcompatiblity with Angular CLI
 ENV NODE_OPTIONS=--openssl-legacy-provider
+
+#install Angular dependencies
+WORKDIR /app/client/CompatibilityCheck
+RUN npm install
+WORKDIR /app
 
 RUN mvn clean package -DskipTests
 
