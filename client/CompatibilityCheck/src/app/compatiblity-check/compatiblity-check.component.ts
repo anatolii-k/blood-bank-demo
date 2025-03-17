@@ -13,12 +13,17 @@ export class CompatiblityCheckComponent implements OnInit {
   donorBloodType: string = '';
   alertMessage: string = '';
   alertClass: string = '';
-  constructor(private http: HttpClient) {}
+  private apiUrl: string;
+
+  constructor(private http: HttpClient) {
+
+    this.apiUrl = location.protocol + "//" + location.hostname + ":8080/api/utilities/compatibility";
+  }
 
   checkCompatibility() {
     const recipient = encodeURIComponent(this.recipientBloodType);
     const donor = encodeURIComponent(this.donorBloodType);
-    const url = `http://localhost:8080/api/utilities/compatibility?recipientType=${recipient}&donorType=${donor}`;
+    const url = this.apiUrl + `?recipientType=${recipient}&donorType=${donor}`;
 
     this.http
       .get<any>(url)
