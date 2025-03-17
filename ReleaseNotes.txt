@@ -1,0 +1,5 @@
+
+Version 1.0.0
+
+- Main menu is added
+- Utilities / Compatibility Check  feature is added
