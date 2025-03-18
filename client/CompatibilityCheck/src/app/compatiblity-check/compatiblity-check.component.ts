@@ -17,7 +17,7 @@ export class CompatiblityCheckComponent implements OnInit {
 
   constructor(private http: HttpClient) {
 
-    this.apiUrl = location.protocol + "//" + location.hostname + ":8080/api/utilities/compatibility";
+    this.apiUrl = "http://" + location.hostname + ":8080/api/utilities/compatibility";
   }
 
   checkCompatibility() {
