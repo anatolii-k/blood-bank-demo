@@ -1,5 +1,8 @@
+==== Version 1.0.1 ========================================
 
-Version 1.0.0
+- Non functional: project is adjusted to allow cloud deployment. It was successfully deployed on Render.com
+
+==== Version 1.0.0 ========================================
 
 - Main menu is added
 - Utilities / Compatibility Check  feature is added

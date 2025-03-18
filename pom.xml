@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>anatolii.k</groupId>
 	<artifactId>bloodbank</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<name>Blood Bank System</name>
 	<description>Demo project for Blood Bank System</description>
 	<url/>
