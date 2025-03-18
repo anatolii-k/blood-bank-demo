@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-compatiblity-check',
@@ -13,17 +14,13 @@ export class CompatiblityCheckComponent implements OnInit {
   donorBloodType: string = '';
   alertMessage: string = '';
   alertClass: string = '';
-  private apiUrl: string;
 
-  constructor(private http: HttpClient) {
-
-    this.apiUrl = "http://" + location.hostname + ":8080/api/utilities/compatibility";
-  }
+  constructor(private http: HttpClient) {  }
 
   checkCompatibility() {
     const recipient = encodeURIComponent(this.recipientBloodType);
     const donor = encodeURIComponent(this.donorBloodType);
-    const url = this.apiUrl + `?recipientType=${recipient}&donorType=${donor}`;
+    const url = environment.API_BASE_URL + `/utilities/compatibility?recipientType=${recipient}&donorType=${donor}`;
 
     this.http
       .get<any>(url)
